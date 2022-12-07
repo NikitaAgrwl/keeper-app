@@ -1,0 +1,11 @@
+.heading {
+    margin-top: 0;
+}
+.heading-container { 
+    height: 7vh;
+    background-color: rgb(5, 5, 47);
+    color: white;
+    padding: 15px 48px;
+    display: flex;
+    justify-content: space-between;
+}

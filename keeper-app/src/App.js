@@ -1,25 +1,47 @@
-import logo from './logo.svg';
+import { useState } from 'react';
+import Header from './components/Header';
+import Notes from './components/Notes';
+import Form from './components/Form';
+import Footer from './components/Footer';
+import {connect} from 'react-redux';
 import './App.css';
+// import { addNote } from './redux/action';
 
-function App() {
+function App({noteData}) {
+  const [showForm, setShowForm]= useState(false);
+  // log
+  // console.log("logg",noteData);
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Header
+        setShowForm={setShowForm}
+      />
+      <div className='main-container'>
+        {noteData.map(noteItem =>( 
+            <Notes
+              key={noteItem.id}
+              title={noteItem.title}
+              content={noteItem.content}
+            />
+          ))}
+      </div>
+      {showForm && <Form setShowForm={setShowForm} /> }
+      
+      <Footer />
     </div>
   );
 }
 
-export default App;
+const mapStateToProps = (state) => {
+  return {
+    noteData: state.noteReducer
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return{
+    // addNote: (data)=>{dispatch(addNote(data))}
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(App);

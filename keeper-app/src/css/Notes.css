@@ -1,0 +1,18 @@
+.notes-container {
+    height: 200px;
+    padding: 10px;
+    width: 300px;
+    background-color: white;
+    border-radius: 5px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    margin-top: 30px;
+}
+.notes-heading {
+    margin-left: 10px;
+}
+
+.notes-content {
+    margin-left: 10px;
+    font-weight: bold;
+}
+
